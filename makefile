@@ -1,8 +1,8 @@
 # Makefile for Austin Choi's braifuck compiler
 
 MAIN		= ./main.cpp
-INCLUDES	= ./includes/lexer.cpp ./includes/translator.cpp
-OUTFILE		= ./bfCompile
+INCLUDES	= ./sources/lexer.cpp ./sources/translator.cpp
+OUTFILE		= ./fck
 
 all: a.out
 

@@ -34,12 +34,12 @@ int main(int argc, const char* argv[])
     bfOutput << translator.translateTokensCpp();
     bfOutput << "return 0; } " << std::endl
                 << "void Increment(char tape[], int ptr) {" << std::endl
-                    << "if((int)tape[ptr] == 255) { tape[ptr] = 0; }" << std::endl
-                    << "else { tape[ptr]++; }" << std::endl
+                    << "tape[ptr] = (tape[ptr] + 1) % 256;" << std::endl
                 << "}" << std::endl
                 << "void Decrement(char tape[], int ptr) {" << std::endl
-                    << "if(tape[ptr] == 0) { tape[ptr] = (char)255; }" << std::endl
-                    << "else { tape[ptr]--; }" << std::endl
+                    << "tape[ptr] = (tape[ptr] + 255) % 256;" << std::endl
+                    /* << "if(tape[ptr] == 0) { tape[ptr] = (char)255; }" << std::endl */
+                    /* << "else { tape[ptr]--; }" << std::endl */
                 << "}" << std::endl
                 << "void RightShift(int& ptr) { ptr++; }" << std::endl
                 << "void LeftShift(int& ptr) { ptr--; }" << std::endl
@@ -48,7 +48,7 @@ int main(int argc, const char* argv[])
                     << "std::getline(std::cin, input);" << std::endl
                     << "return input[0];" << std::endl
                 << "}" << std::endl
-                << " void Output(char tape[], int ptr) { std::cout << tape[ptr] << std::endl; }" << std::endl;
+                << " void Output(char tape[], int ptr) { std::cout << tape[ptr]; }" << std::endl;
 
     system("g++ brainfuck.cpp -o bf.out");
     remove("brainfuck.cpp");
